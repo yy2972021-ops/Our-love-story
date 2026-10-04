@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary My Love ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .card-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 25px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.25);
+            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out forwards;
+        }
+        .step.active {
+            display: block;
+        }
+
+        h2 {
+            color: #d63384;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #495057;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            width: 80%;
+            padding: 12px 15px;
+            border: 2px solid #ff4b5c;
+            border-radius: 20px;
+            outline: none;
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 75, 92, 0.4);
+            transition: transform 0.2s, background 0.2s;
+            margin: 5px;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            background: #e63946;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .error-msg {
+            color: #e63946;
+            font-size: 0.9rem;
+            display: none;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .celebrate-text {
+            position: fixed;
+            color: #ff1493;
+            font-weight: bold;
+            font-size: 1.2rem;
+            pointer-events: none;
+            animation: floatUp 2.5s ease-out forwards;
+            z-index: 100;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .letter {
+            text-align: left;
+            background: #fff5f6;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ff4b5c;
+            margin-top: 15px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(0.8); }
+            100% { opacity: 0; transform: translateY(-120px) scale(1.2); }
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            animation: moveUp 4s linear infinite;
+            z-index: 1;
+        }
+        @keyframes moveUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <!-- Step 1: First Password -->
+        <div class="step active" id="step1">
+            <h2>🔒 Password လေးရိုက်ပေးပါဦး</h2>
+            <p>1st anni passwordလေးထည့်ပေးနော်အချစ် 💕</p>
+            <input type="password" id="pw1" placeholder="Password...">
+            <br>
+            <div class="error-msg" id="error1">Password မှားနေပါတယ်နော် အချစ်! 🥺</div>
+            <button class="btn" onclick="checkPw1()">ဝင်မည် ✨</button>
+        </div>
+
+        <!-- Step 2: Question -->
+        <div class="step" id="step2">
+            <h2>❓ မေးခွန်းလေးဖြေပေးပါ</h2>
+            <p>ဘေဘီ့အကြိုက်ဆုံးအရောင်ကဘာလဲ ကိုကို? 🤔💙</p>
+            <div class="options-grid">
+                <button class="btn" onclick="checkColor('အနီရောင်')">အနီရောင် ❤️</button>
+                <button class="btn" onclick="checkColor('အပြာရောင်')">အပြာရောင် 💙</button>
+                <button class="btn" onclick="checkColor('အဝါရောင်')">အဝါရောင် 💛</button>
+                <button class="btn" onclick="checkColor('ပန်းရောင်')">ပန်းရောင် 🩷</button>
+            </div>
+            <div class="error-msg" id="error2">မှားသွားပြီ ကိုကိုရယ် ပြန်စဉ်းစားပေးပါဦး! 😜</div>
+        </div>
+
+        <!-- Step 3: Kiss Requirement -->
+        <div class="step" id="step3">
+            <h2>😘 နောက်ထပ် Password ရဖို့</h2>
+            <p>ဘေဘီ့ကို အာဘွား လာပေးပါဦးမှ ပွင့်မှာပါနော်! 💋✨</p>
+            <button class="btn" onclick="goFinal()">အာဘွား ပေးလိုက်ပြီ 😘❤️</button>
+        </div>
+
+        <!-- Step 4: Final Message & Photos -->
+        <div class="step" id="step4">
+            <h2>Happy 1st Anniversary! 🎉❤️</h2>
+            <div class="letter">
+                <p>သိပ်ချစ်တယ်နော် အတူတူရှိနေခဲ့ပေးလို့ ကျေးဇူးတင်ဝမ်းသာရပါတယ်။</p><br>
+                <p>ဒီကနေစပြီး အိုမင်းသည်အထိ အတူတူဆက်ရှိသွားပါရစေ။</p><br>
+                <p>ကိုကို့ရဲ့နွေးထွေးတဲ့ ရင်ခွင်ဖြစ်ပေးပါရစေ။</p><br>
+                <p>သိပ်ချစ်တယ်နော် ပျော်ရွှင်စရာ ၁နှစ်ပြည့်လေးပါ ကိုကို... 💕✨</p>
+            </div>
+
+            <div class="photo-grid">
+                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400" alt="Memory 1">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=400" alt="Memory 2">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkPw1() {
+            const inputPw = document.getElementById('pw1').value;
+            const error1 = document.getElementById('error1');
+
+            if (inputPw === '9102026') {
+                error1.style.display = 'none';
+                switchStep('step1', 'step2');
+            } else {
+                error1.style.display = 'block';
+            }
+        }
+
+        function checkColor(ans) {
+            const error2 = document.getElementById('error2');
+            if (ans === 'အပြာရောင်') {
+                error2.style.display = 'none';
+                triggerCelebration();
+                setTimeout(() => {
+                    switchStep('step2', 'step3');
+                }, 2000);
+            } else {
+                error2.style.display = 'block';
+            }
+        }
+
+        function triggerCelebration() {
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    const text = document.createElement('div');
+                    text.classList.add('celebrate-text');
+                    text.innerText = 'ရေးးးး ကိုကိုကြီးသျှိုင်းသီဟသူကတော်လိုက်တာ ✨💖';
+                    text.style.left = (Math.random() * 30 + 10) + 'vw';
+                    text.style.top = (Math.random() * 30 + 30) + 'vh';
+                    document.body.appendChild(text);
+                    setTimeout(() => text.remove(), 2500);
+                }, i * 350);
+            }
+        }
+
+        function goFinal() {
+            switchStep('step3', 'step4');
+        }
+
+        function switchStep(fromId, toId) {
+            document.getElementById(fromId).classList.remove('active');
+            document.getElementById(toId).classList.add('active');
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💖', '💕', '🌸', '✨'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
