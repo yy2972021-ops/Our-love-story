@@ -158,23 +158,12 @@
 <body>
 
     <div class="card-container">
-        <!-- Love Counter Box -->
-<div style="background: rgba(255, 255, 255, 0.2); padding: 15px; border-radius: 15px; margin: 15px 0; backdrop-filter: blur(5px);">
-  <h3 style="margin-bottom: 8px; color: #fff;">Together Forever 💕</h3>
-  <div id="love-counter" style="font-size: 1.1rem; font-weight: bold; color: #fff;"></div>
-</div>
 
-<!-- Love Letter Box -->
-<div style="margin-top: 20px;">
-  <button onclick="toggleLetter()" style="background: #ff4b2b; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    💌 Click to Open My Special Letter
-  </button>
-  <div id="secret-letter" style="display: none; background: #fff; color: #333; padding: 20px; border-radius: 15px; margin-top: 15px; text-align: left; line-height: 1.6; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
-    <p><b>ငါ့ရဲ့ ကိုကို့အတွက်... ❤️</b></p>
-    <p>ကိုကိုး... ချစ်တယ်သိလား 💕</p>
-    <p>ဘယ်တော့မှ စိတ်မပူပန်စေရဘူးနော်၊ အမြဲတမ်း ကိုကို့ဘေးမှာ ရှိနေပေးမယ်။ အမြဲတမ်း အလိုလိုက်ပေးလို့လည်း ကျေးဇူးအများကြီးတင်ပါတယ်နော် ကိုကို! 💖</p>
-  </div>
-</div>
+        <!-- Love Counter Box -->
+        <div style="background: #fff0f3; border: 2px solid #ff4b5c; padding: 15px; border-radius: 15px; margin-bottom: 20px;">
+            <h3 style="margin-bottom: 8px; color: #d63384;">Together Forever 💕</h3>
+            <div id="love-counter" style="font-size: 1.1rem; font-weight: bold; color: #ff4b5c;"></div>
+        </div>
 
         <!-- Step 1: First Password -->
         <div class="step active" id="step1">
@@ -216,6 +205,18 @@
                 <p>သိပ်ချစ်တယ်နော် ပျော်ရွှင်စရာ ၁နှစ်ပြည့်လေးပါ ကိုကို... 💕✨</p>
             </div>
 
+            <!-- Love Letter Box -->
+            <div style="margin-top: 20px;">
+                <button onclick="toggleLetter()" class="btn" style="width: 100%;">
+                    💌 Click to Open My Special Letter
+                </button>
+                <div id="secret-letter" style="display: none; background: #fff; color: #333; padding: 20px; border-radius: 15px; margin-top: 15px; text-align: left; line-height: 1.6; border: 2px dashed #ff4b5c;">
+                    <p><b>ငါ့ရဲ့ ကိုကို့အတွက်... ❤️</b></p>
+                    <p>ကိုကိုး... ချစ်တယ်သိလား 💕</p>
+                    <p>ဘယ်တော့မှ စိတ်မပူပန်စေရဘူးနော်၊ အမြဲတမ်း ကိုကို့ဘေးမှာ ရှိနေပေးမယ်။ အမြဲတမ်း အလိုလိုက်ပေးလို့လည်း ကျေးဇူးအများကြီးတင်ပါတယ်နော် ကိုကို! 💖</p>
+                </div>
+            </div>
+
             <div class="photo-grid">
                 <img src="IMG_20260914_125936_837.jpg" alt="Memory 1">
                 <img src="IMG_20251114_183834_890.jpg" alt="Memory 2">
@@ -226,32 +227,32 @@
 
     <script>
         // ချစ်သူစတင်ခဲ့သည့်ရက်စွဲ (၂၀၂၅ ခုနှစ်၊ အောက်တိုဘာလ ၉ ရက်)
-const startDate = new Date("2025-10-09"); 
+        const startDate = new Date("2025-10-09"); 
 
-function updateLoveCounter() {
-  const now = new Date();
-  const diff = now - startDate;
+        function updateLoveCounter() {
+            const now = new Date();
+            const diff = now - startDate;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / 1000 / 60) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
 
-  document.getElementById('love-counter').innerHTML = 
-    `${days} ရက် ၊ ${hours} နာရီ ၊ ${minutes} မိနစ် ၊ ${seconds} စက္ကန့်`;
-}
+            document.getElementById('love-counter').innerHTML = 
+                `${days} ရက် ၊ ${hours} နာရီ ၊ ${minutes} မိနစ် ၊ ${seconds} စက္ကန့်`;
+        }
 
-setInterval(updateLoveCounter, 1000);
-updateLoveCounter();
+        setInterval(updateLoveCounter, 1000);
+        updateLoveCounter();
 
-function toggleLetter() {
-  const letter = document.getElementById('secret-letter');
-  if (letter.style.display === "none") {
-    letter.style.display = "block";
-  } else {
-    letter.style.display = "none";
-  }
-}
+        function toggleLetter() {
+            const letter = document.getElementById('secret-letter');
+            if (letter.style.display === "none" || letter.style.display === "") {
+                letter.style.display = "block";
+            } else {
+                letter.style.display = "none";
+            }
+        }
 
         function checkPw1() {
             const inputPw = document.getElementById('pw1').value;
@@ -311,13 +312,16 @@ function toggleLetter() {
             setTimeout(() => heart.remove(), 4000);
         }
         setInterval(createHeart, 400);
+
         document.addEventListener('click', function() {
-      var audio = document.getElementById('myAudio');
-      audio.play();
-    }, { once: true });
+            var audio = document.getElementById('myAudio');
+            if(audio) audio.play();
+        }, { once: true });
     </script>
+
     <audio id="myAudio" autoplay loop style="display:none;">
-  <source src="(128k).mp3" type="audio/mpeg">
-</audio>
+        <source src="(128k).mp3" type="audio/mpeg">
+    </audio>
 </body>
 </html>
+
