@@ -264,6 +264,13 @@
             setTimeout(() => heart.remove(), 4000);
         }
         setInterval(createHeart, 400);
+        document.addEventListener('click', function() {
+      var audio = document.getElementById('myAudio');
+      audio.play();
+    }, { once: true });
     </script>
+    <audio id="myAudio" autoplay loop style="display:none;">
+  <source src="(128k).mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
