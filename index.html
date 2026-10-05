@@ -118,18 +118,49 @@
             margin-top: 15px;
         }
 
-        .photo-grid {
+        /* Photo Gallery Grid Style */
+        .photo-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 20px;
         }
-        .photo-grid img {
-            width: 100%;
-            height: 130px;
-            object-fit: cover;
+        .photo-card {
+            position: relative;
+            overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Fullscreen Image Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
         }
 
         @keyframes fadeIn {
@@ -217,12 +248,24 @@
                 </div>
             </div>
 
-            <div class="photo-grid">
-                <img src="IMG_20260914_125936_837.jpg" alt="Memory 1">
-                <img src="IMG_20251114_183834_890.jpg" alt="Memory 2">
+            <!-- Photo Gallery Grid -->
+            <div class="photo-gallery">
+                <div class="photo-card" onclick="openModal(this)">
+                    <img src="IMG_20260914_125936_837.jpg" alt="Memory 1">
+                </div>
+                <div class="photo-card" onclick="openModal(this)">
+                    <img src="IMG_20251114_183834_890.jpg" alt="Memory 2">
+                </div>
+                <!-- ဓာတ်ပုံ ထပ်တိုးချင်ရင် အောက်ပါ line အတိုင်း ပုံနာမည်ပြောင်းပြီး ထပ်ထည့်လို့ရပါတယ် -->
+                <!-- <div class="photo-card" onclick="openModal(this)"><img src="PHOTO_NAME.jpg" alt="Memory 3"></div> -->
             </div>
         </div>
 
+    </div>
+
+    <!-- Image Modal for Full View -->
+    <div id="imgModal" class="modal" onclick="closeModal()">
+        <img id="modalImg" src="" alt="Full View">
     </div>
 
     <script>
@@ -252,6 +295,18 @@
             } else {
                 letter.style.display = "none";
             }
+        }
+
+        // Image Modal Logic
+        function openModal(element) {
+            const modal = document.getElementById('imgModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = element.querySelector('img').src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imgModal').style.display = 'none';
         }
 
         function checkPw1() {
@@ -324,4 +379,5 @@
     </audio>
 </body>
 </html>
+
 
