@@ -76,12 +76,30 @@
             z-index: 1000;
         }
 
-        /* 📅 Counter */
+        /* 📅 Live Counter Design */
+        .counter-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .counter-unit {
+            background: #ffe6eb;
+            padding: 10px 12px;
+            border-radius: 12px;
+            min-width: 65px;
+            border: 1px solid #ffccd5;
+        }
         .counter-num {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #e91e63;
-            margin: 10px 0;
+        }
+        .counter-label {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 3px;
         }
 
         /* 💗 Timeline */
@@ -203,11 +221,28 @@
 
     <div class="container">
 
-        <!-- 📅 Love Counter Section -->
+        <!-- 📅 Live Real-time Love Counter Section -->
         <div class="card">
             <h2>✨ အတူတူရှိခဲ့ကြတဲ့ အချိန်များ ✨</h2>
-            <div class="counter-num" id="counter">0 ရက်မြောက်နေ့</div>
-            <p style="font-size: 0.9rem; color: #888;">(Since 2025 Oct 9 ❤️)</p>
+            <div class="counter-box">
+                <div class="counter-unit">
+                    <div class="counter-num" id="days">0</div>
+                    <div class="counter-label">Days</div>
+                </div>
+                <div class="counter-unit">
+                    <div class="counter-num" id="hours">0</div>
+                    <div class="counter-label">Hours</div>
+                </div>
+                <div class="counter-unit">
+                    <div class="counter-num" id="minutes">0</div>
+                    <div class="counter-label">Mins</div>
+                </div>
+                <div class="counter-unit">
+                    <div class="counter-num" id="seconds">0</div>
+                    <div class="counter-label">Secs</div>
+                </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #888;">(Since 2025 Oct 9 ❤️)</p>
         </div>
 
         <!-- 💗 Timeline Section -->
@@ -258,7 +293,7 @@
             <p style="font-size: 0.9rem;">လွမ်းတဲ့အခါတိုင်း ဖတ်ဖို့နော်...</p>
             <button class="btn-custom" onclick="toggleLetter()">Open when you miss me 📩</button>
             <div class="hidden-content" id="secretLetter">
-                ကိုကို့ကို သိပ်လွမ်းရင် ဒီစာလေးကို ဖတ်ပေးနော်။ ဘယ်တော့မှ စိတ်မပူပါနဲ့၊ ဘေဘီက ကိုကို့ဘေးမှာ အမြဲတမ်း ရှိနေပေးမှာပါ။ အမြဲတမ်း နွေးထွေးတဲ့ ရင်ခွင်လေးဖြစ်ပေးလို့ ကျေးဇူးအများကြီးတင်ပါတယ်နော် ကိုကို! 💖✨
+                ဘေဘီ့ကို သိပ်လွမ်းရင် ဒီစာလေးကို ဖတ်ပေးနော်။ ဘယ်တော့မှ စိတ်မပူပါနဲ့၊ ဘေဘီက ကိုကို့ဘေးမှာ အမြဲတမ်း ရှိနေပေးမှာပါ။ အမြဲတမ်း နွေးထွေးတဲ့ ရင်ခွင်လေးဖြစ်ပေးလို့ ကျေးဇူးအများကြီးတင်ပါတယ်နော် ကိုကို! 💖✨
             </div>
         </div>
 
@@ -311,13 +346,25 @@
     </div>
 
     <script>
-        // 📅 Love Counter
-        const startDate = new Date(2025, 9, 9); // Oct 9, 2025
+        // 📅 Real-time Love Counter (Days, Hours, Minutes, Seconds)
+        const startDate = new Date(2025, 9, 9, 0, 0, 0); // Oct 9, 2025
         function updateCounter() {
             const now = new Date();
-            const diffDays = Math.floor(Math.abs(now - startDate) / (1000 * 60 * 60 * 24));
-            document.getElementById("counter").innerText = `${diffDays} ရက်မြောက်နေ့ ❤️`;
+            const diff = Math.abs(now - startDate);
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
         }
+
+        // ၁ စက္ကန့်တိုင်း အလိုအလျောက် အချိန်တိုးသွားစေရန်
+        setInterval(updateCounter, 1000);
         updateCounter();
 
         // 🎵 Music Toggle
@@ -359,11 +406,11 @@
 
         // 💕 Reasons Array
         const reasons = [
-            "၁။ ဘာလုပ်လုပ် စိတ်ရှည်လက်ရှည် အလိုလိုက်ပေးလို့",
-            "၂။ စိတ်ညစ်နေချိန်တိုင်း နွေးထွေးတဲ့ အားအင်တွေပေးလို့",
-            "၃။ ကိုကို့ရဲ့ ပြုံးပြုံးလေးနဲ့ ကြည့်ပေးတတ်တဲ့ အကြည့်တွေကြောင့်",
-            "၄။ အမြဲတမ်း ဂရုစိုက်ပြီး ဘေးမှာရှိပေးလို့",
-            "၅။ ဒီကမ္ဘာပေါ်မှာ ဘေဘီ့ကို အချစ်ဆုံးသူ ဖြစ်ပေးလို့..."
+            "၁။ ဘာလုပ်လုပ် စိတ်ရှည်လက်ရှည် အလိုလိုက်ပေးလို့ ❤️",
+            "၂။ စိတ်ညစ်နေချိန်တိုင်း နွေးထွေးတဲ့ အားအင်တွေပေးလို့ 🌸",
+            "၃။ ကိုကို့ရဲ့ ပြုံးပြုံးလေးနဲ့ ကြည့်ပေးတတ်တဲ့ အကြည့်တွေကြောင့် ✨",
+            "၄။ အမြဲတမ်း ဂရုစိုက်ပြီး ဘေးမှာရှိပေးလို့ 💕",
+            "၅။ ဒီကမ္ဘာပေါ်မှာ ဘေဘီ့ကို အချစ်ဆုံးသူ ဖြစ်ပေးလို့... 💖"
         ];
         let reasonIndex = 0;
         function nextReason() {
@@ -391,4 +438,5 @@
     </script>
 </body>
 </html>
+
 
