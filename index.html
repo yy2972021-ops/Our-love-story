@@ -118,12 +118,23 @@
             margin-top: 15px;
         }
 
+        /* Gallery Title Style */
+        .gallery-title {
+            color: #d63384;
+            font-size: 1.3rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
         /* Photo Gallery Grid Style */
         .photo-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-top: 20px;
         }
         .photo-card {
             position: relative;
@@ -138,9 +149,17 @@
         }
         .photo-card img {
             width: 100%;
-            height: 140px;
+            height: 130px;
             object-fit: cover;
             display: block;
+        }
+
+        /* 5 မြောက်ပုံကို အလယ်မှာ အပြည့်ပေါ်စေရန် */
+        .photo-card.full-width {
+            grid-column: span 2;
+        }
+        .photo-card.full-width img {
+            height: 160px;
         }
 
         /* Fullscreen Image Modal */
@@ -248,7 +267,10 @@
                 </div>
             </div>
 
-            <!-- Photo Gallery Grid -->
+            <!-- Gallery Title -->
+            <h3 class="gallery-title">📸 Our Photo Gallery 📸</h3>
+
+            <!-- Photo Gallery Grid (5 Photos) -->
             <div class="photo-gallery">
                 <div class="photo-card" onclick="openModal(this)">
                     <img src="IMG_20260914_125936_837.jpg" alt="Memory 1">
@@ -256,8 +278,15 @@
                 <div class="photo-card" onclick="openModal(this)">
                     <img src="IMG_20251114_183834_890.jpg" alt="Memory 2">
                 </div>
-                <!-- ဓာတ်ပုံ ထပ်တိုးချင်ရင် အောက်ပါ line အတိုင်း ပုံနာမည်ပြောင်းပြီး ထပ်ထည့်လို့ရပါတယ် -->
-                <!-- <div class="photo-card" onclick="openModal(this)"><img src="PHOTO_NAME.jpg" alt="Memory 3"></div> -->
+                <div class="photo-card" onclick="openModal(this)">
+                    <img src="photo3.jpg" alt="Memory 3">
+                </div>
+                <div class="photo-card" onclick="openModal(this)">
+                    <img src="photo4.jpg" alt="Memory 4">
+                </div>
+                <div class="photo-card full-width" onclick="openModal(this)">
+                    <img src="photo5.jpg" alt="Memory 5">
+                </div>
             </div>
         </div>
 
@@ -379,5 +408,4 @@
     </audio>
 </body>
 </html>
-
 
