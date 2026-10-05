@@ -348,13 +348,14 @@
     <script>
         // 📅 Real-time Love Counter (Days, Hours, Minutes, Seconds)
         const startDate = new Date(2025, 9, 9, 0, 0, 0); // Oct 9, 2025
+
         function updateCounter() {
             const now = new Date();
             const diff = Math.abs(now - startDate);
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
 
             document.getElementById("days").innerText = days;
@@ -438,5 +439,4 @@
     </script>
 </body>
 </html>
-
 
